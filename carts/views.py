@@ -94,7 +94,7 @@ def add_cart(request,product_id):
         if len(product_variation) > 0:
             cart_item.variations.clear()
             item.variations.add(*product_variation) 
-        cart_item.save()
+            cart_item.save()
     # return HttpResponse(cart_item.product) 
     # exit()  
     return redirect('cart')    

@@ -5,7 +5,7 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 # model to create a normal user
 class MyAccountManager(BaseUserManager):
-     def create_user(self, first_name,last_name,username,email,password=None):
+     def create_user(self, first_name,last_name,email,username,password=None):
          if not email:
              raise ValueError('User must have an email address')
          
@@ -20,6 +20,7 @@ class MyAccountManager(BaseUserManager):
          )
          
          user.set_password(password)
+         user.is_active = True
          user.save(using=self.db)
          return user
      
